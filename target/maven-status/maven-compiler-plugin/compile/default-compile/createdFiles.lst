@@ -1,0 +1,10 @@
+app/sales/SalesApplication.class
+app/sales/domain/repository/repositoryUsers.class
+app/sales/domain/repository/repositoryProjects.class
+app/sales/model/routes/teste.class
+app/sales/domain/repository/repositoryProducts.class
+app/sales/domain/entity/user.class
+app/sales/domain/entity/log.class
+app/sales/domain/entity/project.class
+app/sales/domain/repository/repositoryLogs.class
+app/sales/domain/entity/product.class
