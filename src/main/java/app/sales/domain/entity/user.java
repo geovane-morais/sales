@@ -27,14 +27,16 @@ public class user{
 
     @NotNull(message = "function admin cannot be null")
     @Column(name = "is_admin")
-    private boolean isAdmin;
+    private int isAdmin;
 
     @NotNull(message = "name Id cannot be null")
     @Column(name = "name")
     private String name;
-
     @NotNull(message = "email cannot be null")
     @Column(name = "email")
+    private String email;
+    @NotNull(message = "phone cannot be null")
+    @Column(name = "phone")
     private String phone;
 
     @Column(name = "address")

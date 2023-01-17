@@ -8,7 +8,7 @@ let tabledata = [
 ];
 
 let table_database = "projets";
-let forAddRow = {nome: "", descricao: "", thumbnail: "", galeria: ""}
+let forAddRow = {name: "", description: "", photo: "", gallery: ""}
 let teste = ''
 
 //Build Tabulator
@@ -16,32 +16,33 @@ let table = new Tabulator("#table", {
     height: "auto",
     layout: "fitColumns",
     ajaxURL:"/api/projects/findAll",
+    ajaxConfig:"POST",
     ajaxContentType:"json",
     selectable:true,
     history:true, //record table history
     reactiveData: true, //turn on data reactivity
     columns: [
         { title: "Id", field: "id", width: "50", sorter: "number"},
-        { title: "Nome", field: "nome", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Nome", field: "name", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         },},
-        { title: "Descrição", field: "descricao", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Descrição", field: "description", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         },},
-        { title: "thumbnail", field: "thumbnail", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "thumbnail", field: "photo", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         },},
         { title: "Foto", field: "photo", formatter:"image", editor: "image",formatterParams:{ height:"50px", width:"50px", urlPrefix: window.location.origin + "/static/images/cliente/", urlSuffix:".png"}},
-        { title: "Galeria", field: "galeria", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Galeria", field: "gallery", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
@@ -58,7 +59,7 @@ function update_bd(coluna,table_database,id,valor) {
             'valor': valor,
         },
     dataType: 'JSON',
-    url: '/gerenciamento/update',
+    url: '/api/gerenciamento/update',
     type: 'POST',
     success: function(result){
         toastr["success"](coluna+" alterado!")
@@ -81,7 +82,7 @@ $("#btn-delete-table").click(function () {
     $.ajax({
         data: data,
         dataType: 'JSON',
-        url: '/gerenciamento/delete',
+        url: '/api/gerenciamento/delete',
         type: 'POST',
         success: function(result){
             toastr["success"]("Registro(s) excluído(s)!")
@@ -100,10 +101,10 @@ $("#btn-add-table").click(function () {
         data: {'table': table_database,
                 'colunas': len_colunas},
         dataType: 'JSON',
-        url: '/gerenciamento/insert',
+        url: '/api/gerenciamento/insert',
         type: 'POST',
         success: function(result){
-            table.replaceData("/gerenciamento/projetos/load_data")
+            table.replaceData("/api/projects/findAll")
             toastr["success"]("Linha Adicionada com sucesso!")
         },
         error: function(jqXHR, textStatus, errorThrown){

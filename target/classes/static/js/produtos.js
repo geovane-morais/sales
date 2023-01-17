@@ -74,10 +74,10 @@ function carrega_cards() {
   $.ajax({
     dataType: 'JSON',
     url: '/api/products/findAll',
-    type: 'GET',
+    type: 'POST',
     success: function(result){
       let disponibilidade = ''
-      for (teste of result.ok){
+      for (teste of result){
         if (teste['disponibilidade'] == 'indisponivel'){
           disponibilidade = "<b>Produto indisponível</b>"
         } else {

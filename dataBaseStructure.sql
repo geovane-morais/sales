@@ -20,16 +20,17 @@ CREATE TABLE [dbo].[projects](
 	[name] [varchar](100) NULL,
 	[description] [varchar](max) NULL,
 	[photo] [varchar](100) NULL,
-	[gallerry] [varchar](max) NULL,
+	[gallery] [varchar](max) NULL,
  CONSTRAINT [pk_id_projects] PRIMARY KEY ([id]) 
 );
 
 CREATE TABLE [dbo].[products](
 	[id] [int] IDENTITY(0,1) NOT NULL,
 	[name] [varchar](100) NOT NULL,
+	[description] [varchar](100) NULL,
 	[price_per_meter] [float] NULL,
-	[path_image] [varchar](250) NOT NULL,
-	[is_available] [bit] NULL,
+	[path_image] [varchar](250) NULL,
+	[is_available] [bit] DEFAULT 0,
  CONSTRAINT [pk_id_produto] PRIMARY KEY ([id])  
 );
 

@@ -4,13 +4,14 @@ const estadosTabulador = {
     "PB": "PB", "PR": "PR", "PE": "PE", "PI": "PI", "RJ": "RJ", "RN": "RN", "RS": "RS",
     "RO": "RO", "RR": "RR", "SC": "SC", "SP": "SP", "SE": "SE", "TO": "TO"
 }
-let forAddRow = {nome: "", passe: "", email: "", telefone: "", endereco: "", estado_sigla: "", cidade: ""}
+let forAddRow = {name: "", password: "", email: "", phone: "", address: "", state: "", city: ""}
 let table_database = "utilisateur";
 
 //Build Tabulator
 let table = new Tabulator("#table", {
     height: "auto",
     ajaxURL:"/api/users/findAll",
+    ajaxConfig:"POST",
     ajaxContentType:"json",
     layout: "fitColumns",
     history:true,
@@ -18,7 +19,7 @@ let table = new Tabulator("#table", {
     reactiveData: true,
     columns: [
         { title: "Id", field: "id", width: "50", sorter: "number" },
-        { title: "Nome", field: "nome", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Nome", field: "name", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
@@ -30,31 +31,31 @@ let table = new Tabulator("#table", {
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         }, },
-        { title: "Senha", field: "passe", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Senha", field: "password", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         }, },
-        { title: "Telefone", field: "telefone", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Telefone", field: "phone", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         }, },
-        { title: "Endereço", field: "endereco", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Endereço", field: "address", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         }, },
-        { title: "Estado", field: "estado_sigla", sorter: "string", editor: "list", editorParams: { values: estadosTabulador }, cellEdited:function(cell){
+        { title: "Estado", field: "state", sorter: "string", editor: "list", editorParams: { values: estadosTabulador }, cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
             update_bd(coluna,table_database,id,valor)
         }, },
-        { title: "Cidade", field: "cidade", sorter: "string", editor: "input", cellEdited:function(cell){
+        { title: "Cidade", field: "city", sorter: "string", editor: "input", cellEdited:function(cell){
             let valor = cell.getValue()
             let coluna = cell.getField()
             let id = cell.getRow()._row.data.id
@@ -72,7 +73,7 @@ function update_bd(coluna,table_database,id,valor) {
             'valor': valor,
         },
     dataType: 'JSON',
-    url: '/gerenciamento/update',
+    url: '/api/gerenciamento/update',
     type: 'POST',
     success: function(result){
         toastr["success"](coluna+" alterado!")
@@ -95,7 +96,7 @@ $("#btn-delete-table").click(function () {
     $.ajax({
         data: data,
         dataType: 'JSON',
-        url: '/gerenciamento/delete',
+        url: '/api/gerenciamento/delete',
         type: 'POST',
         success: function(result){
             toastr["success"]("Registro(s) excluído(s)!")
@@ -114,10 +115,10 @@ $("#btn-add-table").click(function () {
         data: {'table': table_database,
                 'colunas': len_colunas},
         dataType: 'JSON',
-        url: '/gerenciamento/insert',
+        url: '/api/gerenciamento/insert',
         type: 'POST',
         success: function(result){
-            table.replaceData("/gerenciamento/produtos/load_data")
+            table.replaceData("/api/products/findAll")
             toastr["success"]("Linha Adicionada com sucesso!")
         },
         error: function(jqXHR, textStatus, errorThrown){

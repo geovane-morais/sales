@@ -3,7 +3,7 @@ function carrega_fotos() {
 
     $.ajax({
       dataType: 'JSON',
-      url: '/gerenciamento/imagens/load_data',
+      url: '/api/gerenciamento/imagens/load_data',
       type: 'GET',
       success: function(result){
         for (teste of result.ok){
@@ -38,7 +38,7 @@ function carrega_fotos() {
   
   
   let myDropzone = new Dropzone("div#drop_zone", {
-    url: "/gerenciamento/imagens/upload",
+    url: "/api/gerenciamento/imagens/upload",
     autoProcessQueue: false,
     uploadMultiple: true,
     maxFiles: 10,

@@ -77,7 +77,7 @@ function carrega_cards() {
     type: 'POST',
     success: function(result){
       let disponibilidade = ''
-      for (teste of result.ok){
+      for (teste of result){
         if (teste['disponibilidade'] == 'indisponivel'){
           disponibilidade = "<b>Produto indisponível</b>"
         } else {

@@ -29,11 +29,20 @@ public class product{
     @Column(name = "name")
     private String name;
 
+    @NotNull(message = "description cannot be null")
+    @Column(name = "description")
+    private String description;
+
     @NotNull(message = "price cannot be null")
     @Column(name = "price_per_meter")
     private double pricePerMeter;
 
+    @NotNull(message = "path_image cannot be null")
+    @Column(name = "path_image")
+    private String pathImage;
+
+
     @NotNull(message = "avaliable cannot be null")
     @Column(name = "is_available")
-    private String isAvailable;
+    private int isAvailable;
 }
