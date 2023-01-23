@@ -21,8 +21,8 @@ then
     docker stop java_web
     docker rm java_web
     docker run --name java_web -d --net mySubNet --ip 172.0.0.8 -p 5000:5000 java_projeto-programacao-web
+    docker restart java_web
 fi
-
 
 
 # docker logs java_web -n 40
