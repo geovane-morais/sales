@@ -10,7 +10,7 @@ then
     echo "*** Instalando o container docker mssql ***"
     docker stop MsDataBase
     docker rm MsDataBase
-    docker run --name MsDataBase -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MsSql#D2t2B2s3" -p 1433:1433 --net mySubNet --ip 172.0.0.10 mcr.microsoft.com/mssql/server:2022-latest 
+    docker run --name MsDataBase -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MsSql#D2t2B2s3" -p 1433:1433 --net mySubNet --ip 172.0.0.10 mcr.microsoft.com/mssql/server:2022-latest &
 fi
 
 if [ $install ] 
@@ -22,6 +22,8 @@ then
     docker rm java_web
     docker run --name java_web -d --net mySubNet --ip 172.0.0.8 -p 5000:5000 java_projeto-programacao-web
 fi
+
+
 
 # docker logs java_web -n 40
 # docker exec –it java_web /bin/bash

@@ -45,4 +45,25 @@ public class product{
     @NotNull(message = "avaliable cannot be null")
     @Column(name = "is_available")
     private int isAvailable;
+
+    public void setData(String coluna, String data) {
+        switch (coluna) {
+            case "name":
+                this.name = data;
+                break;
+            case "description":
+                this.description = data;
+                break;
+            case "photo":
+                this.pricePerMeter = Double.parseDouble(data);
+                break;
+            case "gallery":
+                this.pathImage = data;
+                break;
+            case "isAvailable":
+                this.isAvailable = Integer.parseInt(data);
+                break;
+            default:
+        }
+    }
 }

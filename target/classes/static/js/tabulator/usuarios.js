@@ -1,3 +1,5 @@
+if (window.location.pathname == "/gerenciamento/usuarios" ){
+
 const estadosTabulador = {
     "AC": "AC", "AL": "AL", "AP": "AP", "AM": "AM", "BA": "BA", "CE": "CE", "DF": "DF",
     "ES": "ES", "GO": "GO", "MA": "MA", "MT": "MT", "MS": "MS", "MG": "MG", "PA": "PA",
@@ -64,7 +66,6 @@ let table = new Tabulator("#table", {
     ],
 });
 
-
 function update_bd(coluna,table_database,id,valor) {
     $.ajax({
     data: {'coluna': coluna,
@@ -128,23 +129,4 @@ $("#btn-add-table").click(function () {
     })
 })
 
-
-$(document).ready(function () {
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-})
+}

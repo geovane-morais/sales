@@ -10,12 +10,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class dtoUpdateData {
 
     private String[] validColumns = {
-            "nome", "descricao", "thumbnail", "galeria", "preco_x_metro", "disponibilidade",
-            "email", "passe", "telefone", "endereco", "estado_sigla", "cidade"
+            "name", "description", "thumbnail", "gallery", "pricePerMeter", "isAvailable",
+            "email", "password", "phone", "addrres", "state", "city","photo"
     };
 
     private int id;
@@ -30,5 +29,15 @@ public class dtoUpdateData {
             throw new RuntimeException("[[[ Invalid column("+column+") in \"dtoUpdateData\" ]]]");
         }
         this.coluna = column;
+    }
+
+    @Override
+    public String toString() {
+        return "dtoUpdateData{" +
+                "id=" + id +
+                ", coluna='" + coluna + '\'' +
+                ", table_database='" + table_database + '\'' +
+                ", valor='" + valor + '\'' +
+                '}';
     }
 }

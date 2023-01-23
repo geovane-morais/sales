@@ -1,4 +1,4 @@
-function carrega_fotos() { 
+function carrega_fotos_projetos() {
     $.ajax({
         dataType: 'JSON',
         url: '/api/projects/findAll',
@@ -22,7 +22,6 @@ function carrega_fotos() {
                 document.getElementById(id).addEventListener('click', function() {
                     window.location.href = window.location.origin +  "/api/project?" + new URLSearchParams({id:teste.id}).toString();
                 })
-        
             })
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -33,5 +32,7 @@ function carrega_fotos() {
 }
 
 $(function () {
-    carrega_fotos()
+if( window.location.pathname == "/projetos"){
+    carrega_fotos_projetos()
+}
 });

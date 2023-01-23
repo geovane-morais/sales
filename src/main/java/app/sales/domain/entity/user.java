@@ -22,12 +22,12 @@ import lombok.Setter;
 public class user{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") 
+    @Column(name = "id")
     private Integer id;
 
     @NotNull(message = "function admin cannot be null")
     @Column(name = "is_admin")
-    private int isAdmin;
+    private Integer isAdmin;
 
     @NotNull(message = "name Id cannot be null")
     @Column(name = "name")
@@ -54,4 +54,25 @@ public class user{
 
     @Column(name = "temp_password")
     private String tempPassword;
+
+    public void setData(String coluna, String data) {
+        switch (coluna){
+            case "name":
+                this.name = data;
+                break;
+            case "email":
+                this.email = data;
+                break;
+            case "phone":
+                this.phone = data;
+                break;
+            case "password":
+                this.password = data;
+                break;
+            case "isAdmin":
+                this.isAdmin =  Integer.parseInt(data);
+                break;
+            default:
+        }
+    }
 }

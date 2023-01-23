@@ -1,6 +1,8 @@
+if (window.location.pathname == "/gerenciamento/produtos" ){
+
 let table_database = "produits";
 let forAddRow = {name: "", pricePerMeter: "", pathImage: "", isAvailable: "", description: ""}
-const disponivel = {"disponivel": 1, "indisponivel": 0};
+const disponivel = {"1":"disponivel","0":"indisponivel"};
 
 //Build Tabulator
 let table = new Tabulator("#table", {
@@ -111,24 +113,4 @@ $("#btn-add-table").click(function () {
     })
 })
 
-
-$(document).ready(function () {
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-})
-
+}

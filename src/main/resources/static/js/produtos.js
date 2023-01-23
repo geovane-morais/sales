@@ -70,7 +70,7 @@ $("#btn_receber_orcamento").click(function(){
     }
 })
 
-function carrega_cards() {
+function carrega_fotos_produtos(){
   $.ajax({
     dataType: 'JSON',
     url: '/api/products/findAll',
@@ -78,19 +78,19 @@ function carrega_cards() {
     success: function(result){
       let disponibilidade = ''
       for (teste of result){
-        if (teste['disponibilidade'] == 'indisponivel'){
+        if (teste['isAvailable'] == '0'){
           disponibilidade = "<b>Produto indisponível</b>"
         } else {
-          disponibilidade = "<a id='${teste['produto']}' class='btn btn-link stretched-link'>Solicite Orçamento</a>"
+          disponibilidade = "<a id='${teste['name']}' class='btn btn-link stretched-link'>Solicite Orçamento</a>"
         }
 
 
         $("#cards_orcamento").append(`<div class='col'>\
               <div class='card text-white mb-3' style='background-color: #233a3794' >\
-                  <img src='static/images/cliente/${teste['path_image']}.png' class='card-img-top p-2 rounded' alt='...' style="height:20em;">\
+                  <img src='static/images/cliente/${teste['pathImage']}.png' class='card-img-top p-2 rounded' alt='...' style="height:20em;">\
                   <div class='card-body'>\
-                      <h5 class='card-title'>${teste['produto']}</h5>\
-                      <p class='card-text'>${teste['descricao']}.</p>\
+                      <h5 class='card-title'>${teste['name']}</h5>\
+                      <p class='card-text'>${teste['description']}.</p>\
                       ${disponibilidade}\
                   </div>\
               </div>\
@@ -109,6 +109,7 @@ function carrega_cards() {
 }
 
 $(function() {
-  carrega_cards()
-  
+    if(window.location.pathname == "/produtos"){
+        carrega_fotos_produtos()
+    }
 });

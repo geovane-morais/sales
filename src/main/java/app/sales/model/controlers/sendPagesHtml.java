@@ -24,6 +24,11 @@ public class sendPagesHtml {
         return myFiles.getFile(page+".html");
     }
 
+    @GetMapping(value = "/api/project", produces = MediaType.TEXT_HTML_VALUE)
+    public String getPages() {
+        return myFiles.getFile("projeto_itens.html");
+    }
+
     @GetMapping(value = "/gerenciamento",produces = MediaType.TEXT_HTML_VALUE)
     public String getManager() {
         return myFiles.getFile("gerenciamento_index.html");

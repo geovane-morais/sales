@@ -2,6 +2,11 @@ html, body{
     height: 100%;
  }
 
+svg{}
+svg:hover{
+    fill: #0a58ca;
+}
+
 .font_color_rodape {
     color: white;
 }

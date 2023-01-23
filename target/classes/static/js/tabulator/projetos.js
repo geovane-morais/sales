@@ -1,3 +1,5 @@
+if (window.location.pathname == "/gerenciamento/projetos" ){
+
 //Usuario: Nome, e-mail,  senha, telefone, endereço, cidade e estado
 let tabledata = [
     { id: 1, nome: "Oli Bob", descricao: "descricao aqui", thumbnail:"logopng", image: "logopng", galeria:"1,2,3"},
@@ -114,24 +116,4 @@ $("#btn-add-table").click(function () {
     })
 })
 
-
-$(document).ready(function () {
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-})
-
+}

@@ -1,13 +1,13 @@
-let result = ['1', '2', '3', '4']
+//let result = ['1', '2', '3', '4']
 
-function carrega_fotos() {
-
+if(window.location.href.startsWith("http://localhost:5000/api/project?id")){
+function carrega_fotos_itens_projetos() {
     $.ajax({
         dataType: 'JSON',
         url: window.location.href,
         type: 'POST',
         success: function (result) {
-            result[0].galeria.split(',').map(function (teste, index){
+            result.gallery.split(',').map(function (teste, index){
                 let id = 'projeto_' + index
                 $("#itens_projeto").append(`
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -23,7 +23,7 @@ function carrega_fotos() {
                 closeEffect: "none"
             });
         
-            $(".zoom").hover(function(){   
+            $(".zoom").hover(function(){
                 $(this).addClass('transition');
             }, function(){      
                 $(this).removeClass('transition');
@@ -37,5 +37,7 @@ function carrega_fotos() {
 }
 
 $(function () {
-    carrega_fotos();
+    carrega_fotos_itens_projetos();
 })
+
+}
