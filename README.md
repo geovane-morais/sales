@@ -20,8 +20,8 @@
 - Requisitos: docker e sistema operacional linux.
 
 - 1°Passo: ./start mssql
-- 2°Passo: Rodar o conteudo [dataBaseStructure.sql](/dataBaseStructure.sql) no banco de dados com SMDB.
-Usuario:sa
-Senha:MsSql#D2t2B2s3
-Porta:1433
+- 2°Passo: Rodar o conteudo [dataBaseStructure.sql](/dataBaseStructure.sql) no banco de dados com SMDB. </br>
+Usuario:sa  </br>
+Senha:MsSql#D2t2B2s3  </br>
+Porta:1433  </br>
 - 3°Passo: ./start install
