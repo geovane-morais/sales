@@ -13,7 +13,7 @@
 
 <p align="center"><img src="/src/main/resources/static/images/screenPrototype/pageHome.png" width="850"></p>
 <p align="center"><img src="/src/main/resources/static/images/screenPrototype/pageProjects.png" width="850"></p>
-<p align="center"><img src="/src/main/resources/static/images/screenPrototype/managerProjects.png" width="850"></p>
+<p align="center"><img src="/src/main/resources/static/images/screenPrototype/managerProjetos.png" width="850"></p>
 
 ### Como iniciar
 
